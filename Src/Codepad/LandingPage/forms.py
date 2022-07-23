@@ -7,3 +7,4 @@ class Signup(forms.Form):
         return valid
     email = forms.CharField(max_length=200)
     password = forms.CharField(widget = forms.PasswordInput())
+    
