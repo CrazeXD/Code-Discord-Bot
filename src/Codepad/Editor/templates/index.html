@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Codepad - A Discord Bot</title>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+         // header scrolling effect
+         $(window).on('scroll', function(){
+         if($(window).scrollTop()){
+         $('header').addClass('nav-show');
+         
+         } 
+         else{
+         $('header').removeClass('nav-show');
+         }
+         
+         })
+         
+         //hamburger
+         const navSlide = () => {
+         const hamburger = document.querySelector(".hamburger");
+         const navbar = document.querySelector(".nav-bar");
+         const navLinks = document.querySelectorAll(".nav-bar li");
+         
+         hamburger.onclick = () => {
+         
+         navbar.classList.toggle("nav-active");
+         
+         //Animation links
+         navLinks.forEach((link, index) => {
+         if (link.style.animation) {
+         link.style.animation = "";
+         } else {
+         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7+1}s`;
+         }
+         });
+         //hamburger animation
+         hamburger.classList.toggle("toggle");
+         }
+         
+         }
+         
+         window.onload = () => navSlide();
+      </script>
+      <style>
+         
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+         :root{
+         --main-background: #0b0c0f;
+         --main-fonts-color: #fff;
+         --main-decor-color:#00a9e2;
+         --main-header-background:#21252e;
+         --main-font-family: 'Poppins', sans-serif;
+         }
+         *{
+         margin: 0;
+         padding: 0;
+         scroll-behavior: smooth;
+         }
+         main {
+         padding: 0;
+         width: 100%;
+         height: 100%;
+         background: var(--main-background);
+         }
+         /*────────────────── 
+         header
+         ──────────────────*/
+         header{
+         margin: 0 auto;
+         width: 100%;
+         height: 70px;
+         display: flex;
+         align-items: center; 
+         justify-content: space-around; 
+         background: transparent;
+         position: fixed;
+         top: 0;
+         transition: 0.3s;
+         z-index: 5;
+         }
+         .nav-show{
+         opacity: 0;
+         }
+         header:hover{
+         opacity: 1;
+         background: var(--main-header-background);
+         }
+         .nav-bar{
+         list-style:none;
+         position: relative;
+         display: inline-flex;
+         }
+         a.nav-link{
+         margin: 2px;
+         padding: 5px 10px;
+         text-decoration: none;
+         color: var(--main-fonts-color);
+         font-family: var(--main-font-family);
+         cursor: pointer;
+         text-transform: uppercase;
+         }
+         .active{
+         background: var(--main-decor-color);
+         }
+         .nav-link:hover {
+         color: #000000;
+         background: var(--main-decor-color);
+         }
+         /*──────────────────
+         home
+         ──────────────────*/
+         #home{ 	
+         margin: auto;
+         height: 100vh;
+         color: var(--main-fonts-color);
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: space-evenly;
+         }
+         #home .filter{
+         background: url('https://wallpaperaccess.com/full/796832.jpg') no-repeat;
+         background-size: cover;
+         background-position:center;
+         position: absolute;
+         transition-property: border-color;
+         transition-duration: 0.5s;
+         border-color: #976958;
+         border-radius: 5px;
+         top: 0px;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         opacity:.5;
+         }  
+         .intro {
+         text-align:center;
+         color: var(--main-fonts-color);
+         z-index: 1;
+         margin: auto;
+         padding: 20px;
+         }
+         .intro  p{
+         margin: 5px;
+         font-size:1.2rem;
+         font-family: var(--main-font-family);
+         text-align:center;
+         }
+         h3{
+         padding-bottom: 15px;
+         letter-spacing: normal;
+         font-family: var(--main-font-family);
+         font-style: normal;
+         font-size: 60px;
+         color: var(--main-fonts-color);
+         text-shadow: 0px 0px 40px var(--main-decor-color);
+         }
+         /*──────────────────
+         How It Works
+         ──────────────────*/
+         #docs{
+         margin-bottom: 20px;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         text-align:center;
+         color: var(--main-fonts-color);
+         }
+         #docs h3{
+         padding-top: 70px;
+         }
+         #docs p{
+         font-family: var(--main-font-family);
+         font-size:1.2rem;
+         padding: 10px;
+         }
+         /*────────────────── 
+         footer
+         ──────────────────*/
+         footer {
+         width: 100%;
+         height: 100%;
+         background-color: var(--main-header-background);
+         }
+         .copyright {
+         color: #fff;
+         font-size: 1.2rem;
+         line-height: 40px;
+         text-align: center;
+         }
+         .copyright a{
+         color: #fff;
+         font-size: 1rem;
+         letter-spacing: 1px;
+         text-decoration: none;
+         }
+         .copyright a:hover{
+         color: var(--main-decor-color);
+         }
+         /*──── hr ─────*/
+         hr {
+         background: var(--main-decor-color);
+         margin: 2px;
+         height: 3px;
+         width: 150px;
+         border-radius:5px;
+         border: hidden;
+         margin-inline-start: auto;
+         margin-inline-end: auto;
+         }
+         /*────────────────── 
+         Scrollbar
+         ──────────────────*/
+         ::-webkit-Scrollbar{
+         width: 5px; 
+         background: rgba(5,5,5,1);
+         }
+         ::-webkit-Scrollbar-thumb{
+         border-radius: 10px;
+         background: var(--main-decor-color);
+         box-shadow: inset 0 0 20px var(--main-decor-color);
+         }
+         ::-webkit-Scrollbar-track{
+         margin-top: 80px;
+         border-radius: 10px;
+         }
+         /*────────────────── 
+         hamburger
+         ──────────────────*/
+         .hamburger {
+         display: none;
+         }
+         .hamburger div{
+         width: 30px;
+         height: 3px;
+         background: #dbdbdb;
+         margin: 5px;
+         transition:all 0.3s ease;
+         }
+         .toggle .line1{
+         transform: rotate(-45deg) translate(-5px,6px);
+         }
+         .toggle .line2{
+         opacity: 0;
+         }
+         .toggle .line3{
+         transform: rotate(45deg) translate(-5px,-6px);
+         }
+         @keyframes navLinkFade{
+         from{
+         opacity:0;
+         transform: translatex(50px);
+         }
+         to{
+         opacity: 1;
+         transform:translatex(0px);
+         }
+         }
+         a.button{
+            text-decoration: none;
+            color: var(--main-fonts-color);
+            font-family: var(--main-font-family);
+            cursor: pointer;
+            text-transform: uppercase;
+            }
+         /*────────────────── 
+         media queries
+         ──────────────────*/
+         @media only screen and (max-width: 1484px) and (min-width: 1214px) {
+         .work{
+         padding:20px 20%;
+         }
+         }
+         @media only screen and (max-width: 1214px) and (min-width: 1000px) {
+         .work{
+         padding:20px 12%;
+         }
+         }
+         @media only screen and (max-width: 500px) {
+         #home, #docs, #contact{
+         overflow-x: hidden;
+         }
+         header{
+         background-color: var(--main-header-background);
+         }
+         .nav-show{
+         opacity: 1;
+         }	 
+         .nav-bar{
+         position:fixed;
+         top: 0px;
+         right:0;
+         width:60%;
+         height: 100vh;
+         display:flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content:space-evenly;
+         background:var(--main-header-background);
+         transform:translatex(100%);
+         transition: transform 0.5s ease-in;
+         z-index: -1;
+         }
+         .hamburger{
+         position:absolute;
+         top: 17px;
+         right: 5%;
+         display: block;
+         cursor:pointer;
+         z-index: 5;
+         }	
+         .nav-bar li{
+         opacity:0;
+         }
+         }
+         .nav-active{
+         transform:translatex(0%);
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <!--────────────────Header───────────────-->
+         <header>
+            <nav>
+               <ul class="nav-bar">
+                  <div class="bg"></div>
+                  <li><a class="nav-link" href="#home">Home</a></li>
+                  <li><a class="nav-link" href="#docs">How It Works</a></li>
+                  <li><a class="nav-link" href="#invite">Invite the Bot!</a></li>
+                  <li><a class="nav-link" href="/signup">Sign Up!</a></li>
+               </ul>
+               <div class="hamburger">
+                  <div class="line1"></div>
+                  <div class="line2"></div>
+                  <div class="line3"></div>
+               </div>
+            </nav>
+         </header>
+         <main>
+            <!--─────────────────Home────────────────-->
+            <div id="home">
+               <div class="filter"></div>
+               <section class="intro">
+                  <h3>
+                     Codepad
+                     <hr>
+                  </h3>
+                  <p>A Discord Bot Made For Coders.</p>
+                  <p style="text-align:left">Features:</p>
+                  <ul>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Code Directly On Discord or from your web browser!</li>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Set up cool challenges for your server to participate in!</li>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Store code in the cloud!</li>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Get access to features such as IntelliSense and Syntax Highlighting.</li>
+                  </ul>
+               </section>
+            </div>
+            <!--───────────────Projects───────────────-->
+            <div id="docs">
+               <h3>
+                  How It Works
+                  <hr>
+               </h3>
+               <p>The Discord Bot uses embeds from our code editor website to let you write code directly from Discord.
+                  The inbuilt text editor gives you access to features like IntelliSense and syntax highlighting for the supported languages.
+               </p>
+               <p>You can make an account to save and access your codes all from the cloud.</p>
+               <p>Admins are able to set up highly customizable events as challenges for the server.</p>
+            </div>
+            <!--──────────────Invite────────────────-->
+            <div id="invite">
+               <!--────social media links─────-->
+               <h3 style="text-align:center">
+                  Invite the Bot! 
+                  <hr>
+               </h3>
+               <div>
+                  <ul style="list-style-type: none;"><li style="text-align: center; font-size: 30px; "><a class="button" href="https://discord.com/api/oauth2/authorize?client_id=967954074928562186&permissions=9126857728&scope=bot" style="margin: 0px; padding: 0px;">Invite</a></li></ul>
+               </div>
+            </div>
+         </main>
+         <footer class="copyright">© 2020 
+            <a href="#" target="_blank">Rishabh Garg</a>
+         </footer>
+      </div>
+   </body>
+</html>
