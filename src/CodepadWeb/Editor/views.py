@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
-from .models import Accounts
+
 # Create your views here.
 
 def index(request):
     return render(request, 'index.html', {})
 
+def signup(request):
+    context = {}
+    return render(signup, 'signup.html', context)
