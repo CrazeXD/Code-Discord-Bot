@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Codepad - A Discord Bot</title>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="{% static 'landing.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'landingstyle.css' %}">
+   </head>
+   <body>
+      <div class="container">
+         <!--────────────────Header───────────────-->
+         <header>
+            <nav>
+               <ul class="nav-bar">
+                  <div class="bg"></div>
+                  <li><a class="nav-link" href="/#home">Home</a></li>
+                  <li><a class="nav-link" href="/#docs">How It Works</a></li>
+                  <li><a class="nav-link" href="/signup">Sign Up</a></li>
+               </ul>
+               <div class="hamburger">
+                  <div class="line1"></div>
+                  <div class="line2"></div>
+                  <div class="line3"></div>
+               </div>
+            </nav>
+         </header>
+         <main>
+            <!--─────────────────Home────────────────-->
+            <div id="home">
+               <div class="filter"></div>
+               <section class="intro">
+                  <h3>
+                     Codepad
+                     <hr>
+                  </h3>
+                  <p>A Discord Bot Made For Coders.</p>
+                  <p style="text-align:left">Features:</p>
+                  <ul>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Code Directly On Discord or from your web browser!</li>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Set up cool challenges for your server to participate in!</li>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Store up to 500MB of code in the cloud!</li>
+                     <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Get access to features such as IntelliSense and Syntax Highlighting.</li>
+		               <li style="text-align:left; font-family: var(--main-font-family); margin-left: 40px;">Run code directly from your browser!</li>
+                  </ul>
+                  <br><br>
+                  <hr>
+                  <br>
+                  <ul style="list-style-type: none;"><li style="text-align: center; font-size: 30px; font-family: var(--main-font-family);"><a class="button" href="https://discord.com/api/oauth2/authorize?client_id=967954074928562186&permissions=9126857728&scope=bot" style="margin: 0px; padding: 0px;">Click Me to Invite The Bot!</a></li></ul>
+                  <br>
+                  <hr>
+               </section>
+            </div>
+            <!--───────────────Projects───────────────-->
+            <div id="docs">
+               <h3>
+                  How It Works
+                  <hr>
+               </h3>
+               <p>The Discord Bot uses embeds from our code editor website to let you write and run code directly from Discord.
+                  The inbuilt text editor gives you access to features like IntelliSense and syntax highlighting for the supported languages.
+               </p>
+               <p>You can make an account to save and access your codes all from the cloud.</p>
+               <p>Admins are able to set up highly customizable events as challenges for the server.</p>
+
+            </div>
+            <!--──────────────Invite────────────────-->
+         </main>
+         <footer class="copyright">© 2022
+            <a href="#" target="_blank">Rishabh Garg</a>
+         </footer>
+      </div>
+   </body>
+</html>
