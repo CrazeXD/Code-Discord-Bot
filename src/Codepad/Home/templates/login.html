@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>Codepad - Signup</title>
+		<title>Codepad - Login</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="{% static 'bootstrap.css' %}">
@@ -14,14 +14,14 @@
 		<div class="text">
 			<br>
 			{% comment %} Shouldn't need the <br> but I'm lazy {% endcomment %}
-			<h1>Signup for a Codepad Account</h1>
+			<h1>Login</h1>
 		</div>
 		{% block content %} 
 		<div class="container py-5">
 			<form method="POST">
 				{% csrf_token %}
-				{{ register_form|crispy }}                    
-				<button class="btn btn-primary" type="submit">Register</button>
+				{{ login_form|crispy }}                    
+				<button class="btn btn-primary" type="submit">Login</button>
 			</form>
 		</div>
 		{% endblock %}

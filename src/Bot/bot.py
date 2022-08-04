@@ -1,5 +1,4 @@
 import discord
-import os
 import config
 
 class Bot(discord.Client):
