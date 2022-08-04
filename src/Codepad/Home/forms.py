@@ -18,18 +18,3 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 #https://pypi.org/project/django-currentuser/
-class CodeForm(forms.Form):
-
-	SUPPORTED_TYPES = [
-        ("py", "Python"),
-        ("cpp", "C++"),
-        ("java", "Java"),
-        ("c", "C"),
-        ("js", "Node.JS"),
-    ]
-
-	filetype = forms.ChoiceField(choices=SUPPORTED_TYPES)
-	project_name = forms.CharField(validators=[MaxLengthValidator(32)])
-	#String sizes
-	code = forms.CharField(validators=[MaxLengthValidator(524288)])
-	
