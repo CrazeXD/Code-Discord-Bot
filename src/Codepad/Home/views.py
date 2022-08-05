@@ -1,11 +1,12 @@
 import time
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import NewUserForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm 
-
+from .models import Code #To create a code, call Code.objects.create_code(user=str(), fileextension=str(), codefile=str())
+from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, "index.html", {})
 
@@ -42,6 +43,6 @@ def login_rq(request):
     form = AuthenticationForm()
     return render(request, "login.html", context={"login_form":form})
 
-def home(request):
-    if request.method == "GET":
-        return render(request, "home.html", context={"username":request.user.id})
+def dashboard(request):
+    username = request.user.id
+    return render(request, "home.html", {})
