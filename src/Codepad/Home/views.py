@@ -43,6 +43,7 @@ def login_rq(request):
     form = AuthenticationForm()
     return render(request, "login.html", context={"login_form":form})
 
+@login_required
 def dashboard(request):
     username = request.user.id
     return render(request, "home.html", {})
