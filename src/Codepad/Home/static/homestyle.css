@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Source+Sans+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+:root {
+--main-background: #0f164a;
+--main-fonts-color: #fff;
+--main-decor-color: #00a9e2;
+--main-header-background: #21252e;
+--main-fonts-family: 'Poppins', sans-serif;
+--secondary-fonts-family: 'Kanit', sans-serif;
+--secondary-fonts-color: rgb(136, 169, 255);
+}
+* {
+    margin: 0;
+	padding: 0;
+}
+body {
+	background: var(--main-background);
+}
+div.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 140px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgb(3, 0, 30); 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+/* The navigation menu links */
+div.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: var(--main-fonts-color);
+    line-height: 5vh;
+    display: block;
+    text-align: center;
+    margin: 0px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+  
+  /* When you mouse over the navigation links, change their color */
+div.sidenav a:hover {
+    color: #1500ff;
+}
+div.leftnav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 140px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: rgb(3, 0, 30); 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+/* The navigation menu links */
+div.leftnav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: var(--main-fonts-color);
+    line-height: 5vh;
+    display: block;
+    text-align: center;
+    margin: 0px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+  
+  /* When you mouse over the navigation links, change their color */
+div.leftnav a:hover {
+    color: #1500ff;
+}
+
+
+
+  /* Style page content */
+.main {
+    margin-left: 140px; 
+    margin-right: 140px;
+    margin-top: 0px;
+    padding-top: 0%;
+}
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    .leftnav {padding-top: 15px;}
+    .leftnav a {font-size: 18px;}
+}
+div.main div.banner {
+    width: auto;
+    background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/79731568097599.5b50bca477735.jpg);
+    padding: 0px;
+    margin: 0px;
+    background-size: cover;
+    background-position:center;
+    top: 0px;
+    height: 220px;
+}
+
+div.main div.banner h1 {
+    padding-left: 10px;
+    letter-spacing: normal;
+    font-family: var(--secondary-fonts-family);
+    font-style: normal;
+    font-size: 40px;
+    color: var(--main-fonts-color);
+    text-shadow: 0px 0px 20px var(--main-decor-color);
+    padding-top: 70px;
+}
+div.main h2 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px;
+    color: var(--main-fonts-color);
+    padding-top: 25px;
+    padding-left: 10px;
+}
+div.main h3 {
+    font-family: var(--secondary-fonts-family);
+    color: var(--secondary-fonts-color);
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+div.main div.projects p {
+    font-family: var(--main-fonts-family);
+    font-size: 20px;
+    color: var(--main-fonts-color);
+    padding-top: 25px;
+    padding-left: 10px;
+}
