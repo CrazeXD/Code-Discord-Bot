@@ -1,5 +1,7 @@
+from http.client import HTTPResponse
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import forms
 from django.contrib.auth.models import User
 from .models import Code
 # Create your forms here.
@@ -18,13 +20,20 @@ class NewUserForm(UserCreationForm):
             user.save()
         return user
 
-class NewCodeForm:
+class NewCodeForm(forms.ModelForm):
     class Meta:
+        model = Code
         fields = ("name", "fileextension")
-    def save(self, commit=True):
+        unique_together = ['name', 'owner', 'fileextension']
+    def add_owner(self, request):
+        username = request.user.username
+        username = username.lower()
+        return username
+    def save(self, request, commit=True):
         code = super(NewCodeForm, self).save(commit=False)
         code.name = self.cleaned_data['name']
         code.fileextension = self.cleaned_data['fileextension']
+        code.owner = self.add_owner(request)
         if commit:
             code.save()
         return code

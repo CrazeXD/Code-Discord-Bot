@@ -7,6 +7,21 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth.decorators import login_required
 from .models import Code
+
+DEFAULT_FOR_LANG = {
+    "py": "print(\"Hello world!\")",
+    "cpp": "#include <iostream>\nusing namespace std;\n\nint main() {\n\tcout << \"Hello world!\" << endl;\n}",
+    "java": "class Main {\n\tpublic static void Main(String[] args) {\n\t\tSystem.out.println(\"Hello world!\");\n\t}]n}",
+    "c": '''#include <stdio.h>
+            int main() {
+            \tprintf("Hello, World!");
+            return 0;
+            }
+        ''',
+    "js": "console.log('Hello World');"        
+}
+
+
 def index(request):
     return render(request, "index.html", {})
 
@@ -49,22 +64,21 @@ def login_rq(request):
 def dashboard(request):
     context = {}
     username = request.user.username
-    objects = Code.objects.filter(user__exact=username.lower()).order_by("last_edit")[:5]
+    objects = Code.objects.filter(owner__exact=username.lower()).order_by("last_edit")[:5]
     objects = list(objects)
     context = {"Username": username, "codes": objects}
     return render(request, "home.html", context)
 
 @login_required(login_url="/login")
 def create(request):
-    #TODO: Set up view based on form created in forms.py that is linked to the model defined in models.py
     if request.method == "POST":
         form = NewCodeForm(request.POST)
-        if form.is_valid() and form.cleaned_data.get("name") not in list(Code.objects.filter(user__exact=request.user.username.lower())):
-            code = form.save()
-            messages.success("Codepad creation succesful!")
-            time.sleep(2)
-            return HttpResponseRedirect(f"/{request.user.id}/{form.cleaned_data.get('name')}")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
-    code = NewCodeForm()
-    
-    return HttpResponse(r"Coming soon!")
+        if form.is_valid():
+            code = form.save(request, commit=False)
+            code.owner = request.user.username
+            code.codefile = DEFAULT_FOR_LANG[form.cleaned_data['fileextension']]
+            code.save(request)
+            return HttpResponseRedirect(f"{request.user.id}/{form.cleaned_data['name']}/")
+    else:
+        form = NewCodeForm()
+        return render(request, "create.html", {"create_form": form})

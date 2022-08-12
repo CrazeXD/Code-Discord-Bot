@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}   
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,10 +11,14 @@
         <link rel="stylesheet" href="{% static 'create.css' %}">
     </head>
     <body>
-        <form>
-            <div class="form-group">
-                
-            </div>
-        </form>
+        {% block content %} 
+		<div class="container py-5">
+			<form method="POST">
+				{% csrf_token %}
+				{{ create_form|crispy }}                    
+				<button class="btn btn-primary" type="submit">Create</button>
+			</form>
+		</div>
+		{% endblock %}
     </body>
 </html>
