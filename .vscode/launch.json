@@ -8,7 +8,7 @@
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\Src\\Codepad\\manage.py",
+            "program": "${workspaceFolder}\\Source\\CodepadWeb\\manage.py",
             "args": [
                 "runserver"
             ],

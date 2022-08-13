@@ -77,7 +77,14 @@ def create(request):
             code = form.save(request, commit=False)
             code.codefile = DEFAULT_FOR_LANG[form.cleaned_data['fileextension']]
             code.save(request)
-            return HttpResponseRedirect(f"edit/{request.user.username}/{form.cleaned_data['name']}/")
+            return HttpResponseRedirect(f"/edit/{request.user.username}/{form.cleaned_data['name']}/")
     else:
         form = NewCodeForm()
         return render(request, "create.html", {"create_form": form})
+
+def edit(request, username, name):
+    if request.user.username and request.user.is_authenticated():
+        code = Code.objects.filter(username=username, name=name)
+        code = list(code)
+        
+    return HttpResponse("Hello world!")
