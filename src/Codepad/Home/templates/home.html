@@ -24,7 +24,7 @@
             <h2>Recent Projects</h2>
             <!--Style later lol-->
             {% for project in codes %}
-               <p>{{project.name}}</p>
+               <a href="edit/{{user.username}}/{{project.name}}">{{project.name}}</a>
             {% empty %}
             <h3>You Don't Have Any Projects! <a href="/create">Create</a> one now!</h3>
             {% endfor %} 

@@ -64,7 +64,7 @@ def login_rq(request):
 def dashboard(request):
     context = {}
     username = request.user.username
-    objects = Code.objects.filter(owner__exact=username.lower()).order_by("last_edit")[:5]
+    objects = Code.objects.filter(owner__exact=username).order_by("last_edit")[:5]
     objects = list(objects)
     context = {"Username": username, "codes": objects}
     return render(request, "home.html", context)
@@ -75,10 +75,9 @@ def create(request):
         form = NewCodeForm(request.POST)
         if form.is_valid():
             code = form.save(request, commit=False)
-            code.owner = request.user.username
             code.codefile = DEFAULT_FOR_LANG[form.cleaned_data['fileextension']]
             code.save(request)
-            return HttpResponseRedirect(f"{request.user.id}/{form.cleaned_data['name']}/")
+            return HttpResponseRedirect(f"edit/{request.user.username}/{form.cleaned_data['name']}/")
     else:
         form = NewCodeForm()
         return render(request, "create.html", {"create_form": form})

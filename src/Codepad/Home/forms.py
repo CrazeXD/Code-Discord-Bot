@@ -25,15 +25,12 @@ class NewCodeForm(forms.ModelForm):
         model = Code
         fields = ("name", "fileextension")
         unique_together = ['name', 'owner', 'fileextension']
-    def add_owner(self, request):
-        username = request.user.username
-        username = username.lower()
-        return username
+    
     def save(self, request, commit=True):
         code = super(NewCodeForm, self).save(commit=False)
         code.name = self.cleaned_data['name']
         code.fileextension = self.cleaned_data['fileextension']
-        code.owner = self.add_owner(request)
+        code.owner = request.user.username
         if commit:
             code.save()
         return code

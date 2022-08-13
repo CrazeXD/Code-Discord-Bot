@@ -127,7 +127,7 @@ div.main h3 {
     padding-left: 10px;
     padding-top: 10px;
 }
-div.main div.projects p {
+div.main div.projects a {
     font-family: var(--main-fonts-family);
     font-size: 20px;
     color: var(--main-fonts-color);
