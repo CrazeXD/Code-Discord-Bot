@@ -74,17 +74,20 @@ def create(request):
     if request.method == "POST":
         form = NewCodeForm(request.POST)
         if form.is_valid():
-            code = form.save(request, commit=False)
-            code.codefile = DEFAULT_FOR_LANG[form.cleaned_data['fileextension']]
-            code.save(request)
+            if form.cleaned_data['name'] not in [project.name for project in Code.objects.filter(owner__exact=request.user.username)]:
+                code = form.save(request, commit=False)
+                code.codefile = DEFAULT_FOR_LANG[form.cleaned_data['fileextension']]
+                code.save(request)
             return HttpResponseRedirect(f"/edit/{request.user.username}/{form.cleaned_data['name']}/")
     else:
         form = NewCodeForm()
         return render(request, "create.html", {"create_form": form})
 
 def edit(request, username, name):
-    if request.user.username and request.user.is_authenticated():
-        code = Code.objects.filter(username=username, name=name)
-        code = list(code)
-        
-    return HttpResponse("Hello world!")
+    if request.user.username==username and request.user.is_authenticated:
+        code = Code.objects.filter(owner=username, name=name)
+        code = code[0]
+        text = code.codefile
+        context = {'title': name, "code": text}
+        return render(request, 'edit.html', context)
+    return HttpResponse("You are not authorized to view this page.")

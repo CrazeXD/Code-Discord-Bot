@@ -11,6 +11,8 @@ SUPPORTED_TYPES = [
 
 # Create your models here.
 class Code(models.Model):
+    class Meta:
+        unique_together = ['name', 'owner', 'fileextension']
     name = models.CharField(max_length=64, null=True)
     owner = models.CharField(max_length=150, default="")
     fileextension = models.CharField(choices=SUPPORTED_TYPES, max_length=4, verbose_name="Language")

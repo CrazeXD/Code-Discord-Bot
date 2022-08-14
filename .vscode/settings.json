@@ -1,9 +1,9 @@
 {
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "off",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.minimap.enabled": true,
-    "workbench.colorTheme": "Tokyo Night AltSynt",
+    "workbench.colorTheme": "Tokyo Storm AltSynt",
     "editor.largeFileOptimizations": false,
     "html.format.indentInnerHtml": true,
     "html.format.indentHandlebars": true,

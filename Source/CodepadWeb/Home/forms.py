@@ -1,4 +1,3 @@
-from http.client import HTTPResponse
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import forms
@@ -24,7 +23,6 @@ class NewCodeForm(forms.ModelForm):
     class Meta:
         model = Code
         fields = ("name", "fileextension")
-        unique_together = ['name', 'owner', 'fileextension']
     
     def save(self, request, commit=True):
         code = super(NewCodeForm, self).save(commit=False)
